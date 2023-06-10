@@ -1,0 +1,11 @@
+---
+- name: Manage Docker Volumes
+  community.docker.docker_volume:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+    driver: "{{ item.driver }}"
+    driver_options: "{{ item.driver_options }}"
+    labels: "{{ item.labels }}"
+  loop: "{{ docker_volumes }}"
+  tags:
+    - docker_volumes
