@@ -1,0 +1,14 @@
+docker_installation_options:
+  - name: docker
+    state: present
+
+docker_daemon_config:
+  log-driver: json-file
+  log-opts:
+    max-size: "10m"
+    max-file: "3"
+
+docker_networks: []
+docker_volumes: []
+docker_images: []
+docker_containers: []

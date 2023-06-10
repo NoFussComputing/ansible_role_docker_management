@@ -1,0 +1,7 @@
+---
+- name: Configure Docker Daemon
+  community.docker.docker_daemon:
+    daemon_config: "{{ docker_daemon_config }}"
+  tags:
+    - docker_daemon
+  notify: restart docker
