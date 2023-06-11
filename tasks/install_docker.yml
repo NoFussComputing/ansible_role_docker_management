@@ -1,0 +1,13 @@
+---
+- name: Install Docker
+  package:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: present
+  become: true
+  notify: restart docker
+  when: ansible_distribution in ['Debian', 'Ubuntu']
+  tags:
+    - docker_installation
