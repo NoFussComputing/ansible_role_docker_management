@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: Your Name
+  description: Ansible role to manage Docker and related items
+  license: MIT
+  min_ansible_version: 2.10
+  galaxy_tags:
+    - docker
+  platforms:
+    - name: Debian
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+
+dependencies:
+  - role: community.docker

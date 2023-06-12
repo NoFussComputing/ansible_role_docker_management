@@ -1,0 +1,12 @@
+---
+- name: Manage Docker Networks
+  community.docker.docker_network:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+    driver: "{{ item.driver }}"
+    enable_ipv6: "{{ item.enable_ipv6 }}"
+    options: "{{ item.options }}"
+    labels: "{{ item.labels }}"
+  loop: "{{ docker_networks }}"
+  tags:
+    - docker_networks
