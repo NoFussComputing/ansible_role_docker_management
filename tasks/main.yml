@@ -1,0 +1,26 @@
+---
+
+- name: Install Docker
+  ansible.builtin.import_tasks: install_docker.yml
+
+- name: Docker Daemon Config
+  ansible.builtin.import_tasks: configure_docker_daemon.yml
+
+- name: Docker images
+  ansible.builtin.import_tasks: manage_docker_images.yml
+  when: docker_images | length | int > 0
+
+- name: Docker Networks
+  ansible.builtin.import_tasks: manage_docker_networks.yml
+  when: docker_networks | length | int > 0
+
+
+- name: Docker Volumes
+  ansible.builtin.import_tasks: manage_docker_volumes.yml
+  when: docker_volumes | length | int > 0
+
+
+- name: Docker Containers
+  ansible.builtin.import_tasks: manage_docker_containers.yml
+  when: docker_containers | length | int > 0
+
