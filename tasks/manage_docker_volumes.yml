@@ -6,6 +6,6 @@
     driver: "{{ item.driver | default(omit) }}"
     driver_options: "{{ item.driver_options | default(omit) }}"
     labels: "{{ item.labels | default(omit) }}"
-  loop: "{{ docker_volumes }}"
+  loop: "{{ docker_volumes | from_yaml }}"
   tags:
     - docker_volumes
