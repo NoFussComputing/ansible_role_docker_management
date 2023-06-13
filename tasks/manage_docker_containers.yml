@@ -20,6 +20,7 @@
     cap_drop: "{{ item.cap_drop | default(omit) }}"
     cap_add: "{{ item.cap_add | default(omit) }}"
     privileged: "{{ item.privileged | default(false) }}"
+    published_ports: "{{ item.published_ports | default(omit)}}"
     network_mode: "{{ item.network_mode | default(omit) }}"
     networks: "{{ item.networks | default(omit) }}"
     dns_servers: "{{ item.dns_servers | default(omit) }}"
