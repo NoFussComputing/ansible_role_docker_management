@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: Your Name
+  author: No Fuss Computing
   description: Ansible role to manage Docker and related items
   license: MIT
   min_ansible_version: 2.10
@@ -13,6 +13,3 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - all
-
-dependencies:
-  - role: community.docker

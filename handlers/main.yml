@@ -2,6 +2,7 @@
 # Handlers file for docker_management
 
 - name: Restart Docker
-  community.docker.docker_service:
+  ansible.builtin.service:
+    name: docker
     state: restarted
   listen: restart docker
