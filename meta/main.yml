@@ -13,6 +13,3 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - all
-
-dependencies:
-  - role: community.docker
