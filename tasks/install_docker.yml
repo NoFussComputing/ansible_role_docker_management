@@ -6,6 +6,7 @@
       - docker-ce-cli
       - containerd.io
     state: present
+    update_cache: yes
   become: true
   notify: restart docker
   when: ansible_distribution in ['Debian', 'Ubuntu']
