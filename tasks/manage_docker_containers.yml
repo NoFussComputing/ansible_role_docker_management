@@ -3,7 +3,7 @@
   community.docker.docker_container:
     name: "{{ item.name }}"
     image: "{{ item.image }}"
-    state: "{{ item.state | default('present') }}"
+    state: "{{ item.state | default('started') }}"
     command: "{{ item.command | default(omit) }}"
     comparisons: "{{ item.comparisons | default(omit) | from_yaml }}"
     entrypoint: "{{ item.entrypoint | default(omit) }}"
@@ -20,7 +20,7 @@
     cap_drop: "{{ item.cap_drop | default(omit) }}"
     cap_add: "{{ item.cap_add | default(omit) }}"
     privileged: "{{ item.privileged | default(false) }}"
-    published_ports: "{{ item.published_ports | default(omit)}}"
+    published_ports: "{{ item.published_ports | default(omit) | from_yaml}}"
     network_mode: "{{ item.network_mode | default(omit) }}"
     networks: "{{ item.networks | default(omit) }}"
     dns_servers: "{{ item.dns_servers | default(omit) }}"
