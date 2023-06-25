@@ -6,9 +6,11 @@
       - docker-ce-cli
       - containerd.io
     state: present
-    update_cache: yes
+    update_cache: true
   become: true
   notify: restart docker
   when: ansible_distribution in ['Debian', 'Ubuntu']
+  register: docker_management_install
+  run_once: true
   tags:
     - docker_installation
