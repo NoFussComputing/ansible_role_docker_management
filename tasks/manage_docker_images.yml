@@ -32,6 +32,4 @@
     force: "{{ item.force | default(omit) }}"
     remove: "{{ item.remove | default(omit) }}"
     source_directory: "{{ item.source_directory | default(omit) }}"
-  loop: "{{ docker_images | from_yaml }}"
-  tags:
-    - docker_images
+  loop: "{{ docker_images | default('') | from_yaml }}"
