@@ -28,5 +28,5 @@
     dns_servers: "{{ item.dns_servers | default(omit) }}"
     dns_search_domains: "{{ item.dns_search_domains | default(omit) }}"
     user: "{{ item.user | default(omit) }}"
-
+    tty: "{{ item.tty | default(omit) }}"
   loop: "{{ docker_containers | default('') | from_yaml }}"
