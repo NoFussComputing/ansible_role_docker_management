@@ -2,6 +2,8 @@
 - name: Manage Docker Containers
   community.docker.docker_container:
     name: "{{ item.name }}"
+    hostname: "{% if item.hostname is defined %}{{ item.hostname }}{% else %}{{ item.name | lower | replace(' ', '') }}{% endif %}"
+    domainname: "{{ item.domainname | default(omit) }}"
     image: "{{ item.image }}"
     state: "{{ item.state | default('started') }}"
     command: "{{ item.command | default(omit) }}"
