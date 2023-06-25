@@ -30,3 +30,4 @@
     user: "{{ item.user | default(omit) }}"
     tty: "{{ item.tty | default(omit) }}"
   loop: "{{ docker_containers | default('') | from_yaml }}"
+  diff: true
