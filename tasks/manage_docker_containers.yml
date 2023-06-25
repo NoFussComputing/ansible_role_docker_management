@@ -7,7 +7,7 @@
     image: "{{ item.image }}"
     state: "{{ item.state | default('started') }}"
     command: "{{ item.command | default(omit) }}"
-    comparisons: "{{ item.comparisons | default(omit) | from_yaml }}"
+    comparisons: "{{ item.comparisons | default('{ \"*\": \"strict\" }') | from_yaml }}"
     entrypoint: "{{ item.entrypoint | default(omit) }}"
     exposed_ports: "{{ item.exposed_ports | default(omit) }}"
     volumes: "{{ item.volumes | default(omit) }}"
