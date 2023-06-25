@@ -1,6 +1,6 @@
 ---
 - name: Install Docker
-  package:
+  ansible.builtin.package:
     name:
       - docker-ce
       - docker-ce-cli
