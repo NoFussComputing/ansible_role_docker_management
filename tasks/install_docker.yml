@@ -14,3 +14,10 @@
   run_once: true
   tags:
     - docker_installation
+
+
+- name: Start Docker service
+  ansible.builtin.service:
+    name: docker
+    enabled: true
+    state: started
