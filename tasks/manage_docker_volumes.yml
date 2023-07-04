@@ -2,10 +2,8 @@
 - name: Manage Docker Volumes
   community.docker.docker_volume:
     name: "{{ item.name }}"
-    state: "{{ item.state | default(present) }}"
+    state: "{{ item.state | default('present') }}"
     driver: "{{ item.driver | default(omit) }}"
     driver_options: "{{ item.driver_options | default(omit) }}"
     labels: "{{ item.labels | default(omit) }}"
-  loop: "{{ docker_volumes | from_yaml }}"
-  tags:
-    - docker_volumes
+  loop: "{{ docker_volumes | default('') | from_yaml }}"

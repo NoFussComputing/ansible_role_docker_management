@@ -23,4 +23,3 @@
 - name: Docker Containers
   ansible.builtin.import_tasks: manage_docker_containers.yml
   when: docker_containers | length | int > 0
-
