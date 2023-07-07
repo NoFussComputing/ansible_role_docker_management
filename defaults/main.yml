@@ -16,3 +16,12 @@ docker_networks: []
 docker_volumes: []
 docker_images: []
 docker_containers: []
+
+docker_container_comparisons_default: 
+  image: strict
+  env: strict
+  user: strict
+  published_ports: strict
+  volumes: strict
+  networks: strict
+  '*': strict
