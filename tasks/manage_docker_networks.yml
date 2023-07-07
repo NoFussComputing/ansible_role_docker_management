@@ -7,4 +7,5 @@
     enable_ipv6: "{{ item.enable_ipv6 | default(false) }}"
     options: "{{ item.options | default(omit) }}"
     labels: "{{ item.labels | default(omit) }}"
-  loop: "{{ docker_networks | default('') | from_yaml }}"
+    internal: "{{ item.internal | default(true) }}"
+  loop: "{{ docker_networks }}"
