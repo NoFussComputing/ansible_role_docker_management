@@ -1,3 +1,7 @@
+---
+docker_installed: false
+install_docker: false
+
 docker_installation_options:
   - name: docker
     state: present

@@ -1,25 +1,42 @@
 ---
 
 - name: Install Docker
-  ansible.builtin.import_tasks: install_docker.yml
+  ansible.builtin.include_tasks: install_docker.yml
+  when: >
+    install_docker | bool
+      and
+    not docker_installed | bool
 
 - name: Docker Daemon Config
-  ansible.builtin.import_tasks: configure_docker_daemon.yml
+  ansible.builtin.include_tasks: configure_docker_daemon.yml
+  when: >
+    install_docker | bool
 
 - name: Docker images
-  ansible.builtin.import_tasks: manage_docker_images.yml
-  when: docker_images | length | int > 0
+  ansible.builtin.include_tasks: manage_docker_images.yml
+  when: >
+    docker_images | length | int > 0
+      and
+    docker_installed | bool
 
 - name: Docker Networks
-  ansible.builtin.import_tasks: manage_docker_networks.yml
+  ansible.builtin.include_tasks: manage_docker_networks.yml
   when: docker_networks | length | int > 0
+      and
+    docker_installed | bool
 
 
 - name: Docker Volumes
-  ansible.builtin.import_tasks: manage_docker_volumes.yml
-  when: docker_volumes | length | int > 0
+  ansible.builtin.include_tasks: manage_docker_volumes.yml
+  when: >
+    docker_volumes | length | int > 0
+      and
+    docker_installed | bool
 
 
 - name: Docker Containers
-  ansible.builtin.import_tasks: manage_docker_containers.yml
-  when: docker_containers | length | int > 0
+  ansible.builtin.include_tasks: manage_docker_containers.yml
+  when: >
+    docker_containers | length | int > 0
+      and
+    docker_installed | bool
