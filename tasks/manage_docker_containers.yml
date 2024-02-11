@@ -30,4 +30,5 @@
     user: "{{ item.user | default(omit) }}"
     tty: "{{ item.tty | default(omit) }}"
   loop: "{{ docker_containers | default('') | from_yaml }}"
-  diff: true
+  diff: false # May show env vars that are secrets
+  no_log: true
