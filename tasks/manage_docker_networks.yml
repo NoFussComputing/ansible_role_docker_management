@@ -2,11 +2,10 @@
 - name: Manage Docker Networks
   community.docker.docker_network:
     name: "{{ item.name }}"
-    state: "{{ item.state }}"
-    driver: "{{ item.driver }}"
-    enable_ipv6: "{{ item.enable_ipv6 }}"
-    options: "{{ item.options }}"
-    labels: "{{ item.labels }}"
+    state: "{{ item.state | default('present') }}"
+    driver: "{{ item.driver | default(omit) }}"
+    enable_ipv6: "{{ item.enable_ipv6 | default(false) }}"
+    options: "{{ item.options | default(omit) }}"
+    labels: "{{ item.labels | default(omit) }}"
+    internal: "{{ item.internal | default(true) }}"
   loop: "{{ docker_networks }}"
-  tags:
-    - docker_networks

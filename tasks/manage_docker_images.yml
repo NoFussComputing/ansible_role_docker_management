@@ -1,21 +1,35 @@
 ---
+# - name: Manage Docker Images
+#   community.docker.docker_image:
+#     name: "{{ item.name }}"
+#     tag: "{{ item.tag }}"
+#     source: "{{ item.source | default(omit) }}"
+#     pull: "{{ item.pull | default(omit) }}"
+#     build:
+#       path: "{{ item.build.path | default(omit) }}"
+#       pull: "{{ item.build.pull | default(omit) }}"
+#       nocache: "{{ item.build.nocache | default(omit) }}"
+#       buildargs: "{{ item.build.buildargs | default(omit) }}"
+#       labels: "{{ item.build.labels | default(omit) }}"
+#     push: "{{ item.push | default(omit) }}"
+#     force_source: "{{ item.force_source | default(omit) }}"
+#     force: "{{ item.force | default(omit) }}"
+#     remove: "{{ item.remove | default(omit) }}"
+#     source_directory: "{{ item.source_directory | default(omit) }}"
+#   loop: "{{ docker_images }}"
+#   # tags:
+#   #   - docker_images
+
+
 - name: Manage Docker Images
   community.docker.docker_image:
     name: "{{ item.name }}"
     tag: "{{ item.tag }}"
-    source: "{{ item.source }}"
-    pull: "{{ item.pull }}"
-    build:
-      path: "{{ item.build.path }}"
-      pull: "{{ item.build.pull }}"
-      nocache: "{{ item.build.nocache }}"
-      buildargs: "{{ item.build.buildargs }}"
-      labels: "{{ item.build.labels }}"
-    push: "{{ item.push }}"
-    force_source: "{{ item.force_source }}"
-    force: "{{ item.force }}"
-    remove: "{{ item.remove }}"
-    source_directory: "{{ item.source_directory }}"
-  loop: "{{ docker_images }}"
-  tags:
-    - docker_images
+    source: "{{ item.source | default('pull') }}"
+    pull: "{{ item.pull | default(omit) }}"
+    push: "{{ item.push | default(omit) }}"
+    force_source: "{{ item.force_source | default(omit) }}"
+    force: "{{ item.force | default(omit) }}"
+    remove: "{{ item.remove | default(omit) }}"
+    source_directory: "{{ item.source_directory | default(omit) }}"
+  loop: "{{ docker_images | default('') | from_yaml }}"
